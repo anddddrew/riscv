@@ -40,3 +40,21 @@ pub fn store_byte(memory: &mut Memory, address: u32, value: u8) {
     let address = address as usize - MEMORY_START;
     memory[address] = value as u8;
 }
+
+pub fn load_elf(memory: &mut Memory, path: &Path) {
+    let mut buffer = Vec::new();
+    {
+        let mut file = File::open(path).unwrap();
+        // Make sure file gets read
+        assert!(file.read_to_end(&mut buffer).unwrap() > 0);
+    }
+   
+    let elf_file = xmas_elf::ElfFile::new(&&buffer).unwrap();
+    for program_header in elf_file.program_iter() {
+        let address = program_hedaer.physical_addr() as usize - MEMORY_START:
+    }
+}
+
+pub fn dump_registers(registers: &Registers) {
+    let fillter = "-".repeat(20);
+}
