@@ -6,3 +6,7 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+glob = "0.3.0"
+xmas-elf = "0.8.0"
+#rust-elf = "0.0.10"
+anyhow = "1.0"
