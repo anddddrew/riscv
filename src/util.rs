@@ -51,10 +51,33 @@ pub fn load_elf(memory: &mut Memory, path: &Path) {
    
     let elf_file = xmas_elf::ElfFile::new(&&buffer).unwrap();
     for program_header in elf_file.program_iter() {
-        let address = program_hedaer.physical_addr() as usize - MEMORY_START:
+        let address = program_hedaer.physical_addr() as usize - MEMORY_START;
+        
+        if let Ok(program::SegmentData::Undefined(data)) = program_header.get_data(&elf_file) {
+            memory[address..address + data.len()].copy_from_slice(data);
+        } else {
+            panic!("**PANIC**")
+        }
     }
 }
 
 pub fn dump_registers(registers: &Registers) {
-    let fillter = "-".repeat(20);
+    let filter = "-".repeat(20);
+    println!("{0:}{0:}{0:}{0:}", filler);
+    println!(
+        "| pc {0:08x} | {1:}|{1:}|{1:}|",
+        registers[PC],
+        ' '.repeat(20)
+    );
+
+    for i in 0..8 {
+        for j in 0..4 {
+            let index = i + j * 8;
+            print!("| {:>4} {08x} ", REGISTER_NAMES[index], registers[index]);
+        }
+
+        println!("|");
+    }
+
+    println!("{0:}{0:}{0:}{0:}", filler);
 }
