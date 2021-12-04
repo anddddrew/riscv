@@ -8,7 +8,7 @@ env:
 
 jobs:
   rust:
-    runs-on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
   strategy:
     os: [macos-latest, ubuntu-latest, windows-latest]
 
