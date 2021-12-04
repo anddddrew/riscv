@@ -27,3 +27,18 @@ impl std::fmt::Debug for RType {
         )
     }
 }
+
+pub struct IType(pub u32);
+impl IType {
+    pub fn rd(&self) -> u32 {
+        self.0 >> 7 & 0b1_1111
+    }
+
+    pub fn rs1(&self) -> u32 {
+        self.0 >> 15 & 0b1_1111
+    }
+
+    pub fn imm(&self) -> u32 {
+        sign_extend(self.0 >> 20 & 0b1111_1111_1111, 11)
+    }
+}
