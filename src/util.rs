@@ -62,7 +62,7 @@ pub fn load_elf(memory: &mut Memory, path: &Path) {
 }
 
 pub fn dump_registers(registers: &Registers) {
-    let filter = "-".repeat(20);
+    let filler = "-".repeat(20);
     println!("{0:}{0:}{0:}{0:}", filler);
     println!(
         "| pc {0:08x} | {1:}|{1:}|{1:}|",
