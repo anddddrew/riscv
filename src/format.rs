@@ -127,7 +127,7 @@ impl JType {
         self.0 >> 7 & 0x1f
     }
 
-    pub fn imm(&self) -> u32 {
+    pub fn imm(&self) -> u64 {
         sign_extend(
             (self.0 >> (31 - 20) & 0b1_0000_0000_0000_0000_0000)
                 | (self.0 & 0b0_1111_1111_0000_0000_0000)

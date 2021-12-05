@@ -67,7 +67,7 @@ pub fn dump_registers(registers: &Registers) {
     println!(
         "| pc {0:08x} | {1:}|{1:}|{1:}|",
         registers[PC],
-        ' '.repeat(20)
+        " ".repeat(20c)
     );
 
     for i in 0..8 {
