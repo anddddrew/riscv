@@ -1,6 +1,6 @@
 mod format;
-mod instructions
-mod util
+mod instructions;
+mod util;
 
 use formats::{BType, IType, JType, RType, SType, UType};
 use instructions::Instruction;
