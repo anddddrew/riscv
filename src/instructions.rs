@@ -31,8 +31,8 @@ pub enum Instruction {
     XORI(IType),
     ORI(IType),
     ANDI(IType),
-    SLLT(IType),
-    SRLT(IType),
+    SLLI(IType),
+    SRLI(IType),
     SRAI(IType),
 
     ADD(RType),
